@@ -13,9 +13,9 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello World'
 
-@app.route('/nihao')
+@app.route('/nihao11')
 def hello_user():
-    return 'nihao'
+    return 'nihao11'
 
 if __name__ == '__main__':
     app.run()
