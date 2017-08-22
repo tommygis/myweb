@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在线灾情监测</title>
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/color.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/demo/demo.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+<!--各种样式-->
+    <style>
+        .my-map{float:left; width: 50%; height: 600px;}
+		.amap-container{height: 100%;}
+        .text_title{margin: auto auto 10px 0; background: #2fa8ec; text-align:center}
+	</style>
+</head>
+<body >
+    <h1 class="text_title">基于互联网新闻灾情在线收集系统</h1>
+<div class=" my-map">
+    <table id="dg" title="新闻列表" class="easyui-datagrid" style="width:100%;height:600px;"
+            url="/read/"
+            toolbar="#toolbar" pagination="true"
+            rownumbers="true" fitColumns="true" singleSelect="true">
+        <thead>
+            <tr>
+                <th field="news_title" width="50">新闻标题</th>
+                <th field="news_date" width="50">日期</th>
+                <th field="news_detail_time" width="50">时间</th>
+                <th field="news_content" width="50">新闻内容</th>
+                <th field="news_url" width="50">url地址</th>
+                <th field="news_source" width="50">发布者</th>
+                <th field="news_web" width="50">来源网站</th>
+                <th field="news_logtime" width="50">获取时间</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+    <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newNews()">新增新闻</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editNews()">编辑新闻</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyNews()">移除新闻</a>
+    </div>
+
+    <div id="dlg" class="easyui-dialog" style="width:400px"
+            closed="true" buttons="#dlg-buttons">
+        <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
+            <div style="margin-bottom:20px;font-size:20px;border-bottom:1px solid #ccc">新闻详情</div>
+            <div style="margin-bottom:10px">
+                <input name="news_title" class="easyui-textbox" required="true" label="新闻标题:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="news_date" class="easyui-textbox" required="true" label="日期:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="news_detail_time" class="easyui-textbox" required="true" label="时间:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="news_content" class="easyui-textbox" required="true" label="新闻内容:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="news_url" class="easyui-textbox" required="true" label="url地址:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="news_source" class="easyui-textbox" required="true" label="发布者:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="news_web" class="easyui-textbox" required="true"  label="来源网站:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="news_logtime" class="easyui-textbox" required="true"  label="获取时间:" style="width:100%">
+            </div>
+        </form>
+    </div>
+    <div id="dlg-buttons">
+        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveNews()" style="width:90px ">保存</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px" >取消</a>
+    </div>
+
+
+    <!--引入表格-->
+    <script src="../static/js/table.js"></script>
+
+
+
+</body>
+</html>
